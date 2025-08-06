@@ -7,18 +7,27 @@ let mainWindow;
 
 function createSplash() {
   splash = new BrowserWindow({
-    fullscreen: true,
-    frame: true, // shows title bar and window controls
-    alwaysOnTop: true,
+    width: 1280,               // initial width before maximize
+    height: 720,               // initial height before maximize
+    minWidth: 800,
+    maxWidth: 1920,
+    minHeight: 600,
+    maxHeight: 1080,
+    frame: true,               // show native OS window frame with controls
     resizable: true,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-    }
+    },
+    show: false,              // hide until ready to show and maximize
   });
 
-
   splash.loadFile(path.join(__dirname, 'src', 'splash.html'));
+
+  splash.once('ready-to-show', () => {
+    splash.maximize();
+    splash.show();
+  });
 
   splash.on('closed', () => {
     splash = null;
@@ -27,9 +36,15 @@ function createSplash() {
 
 function createMainWindow() {
   mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 800,
-    show: false,
+    width: 1280,
+    height: 720,
+    minWidth: 800,
+    maxWidth: 1920,
+    minHeight: 600,
+    maxHeight: 1080,
+    frame: true,
+    resizable: true,
+    show: false, // hide until ready
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -39,7 +54,14 @@ function createMainWindow() {
   mainWindow.loadFile(path.join(__dirname, 'src', 'login.html'));
 
   mainWindow.once('ready-to-show', () => {
+    mainWindow.maximize();  // maximize main window to fill screen area
     mainWindow.show();
+
+    // Close splash once main window is shown
+    if (splash) {
+      splash.close();
+      splash = null;
+    }
   });
 
   mainWindow.on('closed', () => {
@@ -51,29 +73,29 @@ app.whenReady().then(() => {
   createSplash();
 });
 
-// Splash tells main to show login
+// Listen for splash renderer requesting to show main window
 ipcMain.on('navigate-to-login', () => {
-  if (splash) {
-    splash.close();
+  if (!mainWindow) {
+    createMainWindow();
   }
-  createMainWindow();
+  // Splash stays open until main window ready and shown
 });
 
-// Login page tells main to show aura home page
+// Handle login page success to load home
 ipcMain.on('login-success', () => {
   if (mainWindow) {
     mainWindow.loadFile(path.join(__dirname, 'src', 'auraHome.html'));
   }
 });
 
-// Load Aura Addons main page
+// Load extras page
 ipcMain.on('load-auraaddons', () => {
   if (mainWindow) {
     mainWindow.loadFile(path.join(__dirname, 'src', 'auraaddons.html'));
   }
 });
 
-// Load Addon feature pages safely by checking file existence
+// Safe load addon feature pages
 ipcMain.on('navigate-to-addon', (event, targetFile) => {
   if (!mainWindow) return;
 
@@ -81,14 +103,14 @@ ipcMain.on('navigate-to-addon', (event, targetFile) => {
     console.error('Invalid target file:', targetFile);
     return;
   }
-  
+
   const fileToLoad = path.join(__dirname, 'src', 'features', targetFile);
-  
+
   if (!fs.existsSync(fileToLoad)) {
     console.error('File does not exist:', fileToLoad);
     return;
   }
-  
+
   mainWindow.loadFile(fileToLoad);
 });
 

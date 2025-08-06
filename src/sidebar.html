@@ -4,169 +4,18 @@
   <meta charset="UTF-8">
   <title>Sidebar Demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      display: flex;
-      min-height: 100vh;
-      background: #222;
-      margin: 0;
-    }
-    /* Sidebar base */
-    .sidebar {
-      background: #181818;
-      color: #fff;
-      transition: width 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-      box-sizing: border-box;
-    }
-    .sidebar.collapsed { width: 64px; }
-    .sidebar.expanded  { width: 270px; align-items: flex-start; }
-
-    /* Top icons */
-    .sidebar-top {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 16px;
-      padding: 16px 12px 32px 16px;
-      box-sizing: border-box;
-      justify-content: flex-start;
-      min-height: 60px;
-    }
-    .sidebar.collapsed .sidebar-top {
-      flex-direction: column;
-      gap: 24px;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 24px 0 0 0;
-    }
-    .sidebar-icon {
-      width: 33px;
-      height: 33px;
-      margin-bottom: 6px;
-      display: block;
-      filter: brightness(1.2);
-      transition: background 0.3s;
-      border-radius: 8px;
-    }
-    .active {
-      background: #201c28;
-      border: 1.5px solid #998cff;
-      box-sizing: border-box;
-    }
-
-    /* History section */
-    .sidebar-history {
-      flex: 1;
-      width: 90%;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    .sidebar.collapsed .sidebar-history { display: none; }
-
-    .history-title {
-      font-size: 1.2em;
-      font-weight: 600;
-      margin-top: 8px;
-      margin-bottom: 16px;
-    }
-    .history-section {
-      overflow-y: auto;
-      flex: 1;
-    }
-    .history-group-label {
-      color: #bbb;
-      font-size: 0.98em;
-      margin: 18px 0 8px 0;
-      font-weight: 500;
-    }
-    .history-item {
-      padding: 8px 0;
-      border-radius: 4px;
-      color: #ececec;
-      font-size: 1.06em;
-      transition: background 0.2s;
-      cursor: pointer;
-    }
-    .history-item:hover {
-      background: #25243c;
-    }
-    /* Custom scrollbar */
-    .history-section::-webkit-scrollbar {
-      width: 5px;
-      background: #27243c;
-      border-radius: 3px;
-    }
-    .history-section::-webkit-scrollbar-thumb {
-      background: #6a59d4;
-      border-radius: 3px;
-    }
-
-    /* Bottom Add Ons button */
-    .sidebar-bottom {
-      margin: 20px 0 12px 0;
-      width: 97%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 54px;
-    }
-    .sidebar.collapsed .sidebar-bottom {
-      justify-content: flex-start;
-      align-items: flex-end;
-    }
-    .addons-btn {
-      width: 95%;
-      background: #19191d;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1.13em;
-      padding: 13px 15px 13px 15px;
-      border-radius: 20px;
-      cursor: pointer;
-      box-shadow: 0 3px 18px rgba(81,82,142,0.19);
-      border: none;
-      outline: none;
-      font-family: inherit;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
-      transition: background 0.3s;
-    }
-    .addons-btn:hover {
-      background: #22222d;
-    }
-    .addons-logo {
-      width: 30px;
-      height: 30px;
-      filter: brightness(1.5);
-    }
-    .sidebar.collapsed .addons-btn-text { display: none; }
-    .sidebar.collapsed .addons-logo { margin: 0 auto; }
-
-    .addons-btn-text {
-      font-weight: 600;
-    }
-  </style>
+  <link rel="stylesheet" href="./styles/sidebar.css">
 </head>
 <body>
   <!-- Collapsed Sidebar (left) -->
   <div class="sidebar collapsed">
     <div class="sidebar-top">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Google-flutter-logo.svg" class="sidebar-icon" />
-      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" class="sidebar-icon active" />
+      <img src="./assets/images/auralogo.png" class="sidebar-icon" />
+      <img src="./assets/images/edit.png" class="sidebar-icon active" />
     </div>
     <div class="sidebar-bottom">
       <button class="addons-btn">
-        <img src="https://static-00.iconduck.com/assets.00/abstract-shapes-icon-2048x2048-v61jb7ez.png" class="addons-logo" /> 
+        <img src="./assets/images/addons.png" class="addons-logo" /> 
       </button>
     </div>
   </div>
@@ -174,8 +23,8 @@
   <!-- Expanded Sidebar (right) -->
   <div class="sidebar expanded">
     <div class="sidebar-top">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Google-flutter-logo.svg" class="sidebar-icon" />
-      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" class="sidebar-icon active" />
+      <img src="./assets/images/auralogo.png" class="sidebar-icon" />
+      <img src="./assets/images/edit.svg" class="sidebar-icon active" />
     </div>
     <div class="sidebar-history">
       <div class="history-title">History</div>
@@ -194,8 +43,7 @@
     </div>
     <div class="sidebar-bottom">
       <button class="addons-btn">
-        <img src="https://static-00.iconduck.com/assets.00/abstract-shapes-icon-2048x2048-v61jb7ez.png" class="addons-logo" />
-        <span class="addons-btn-text">Aura’s Add Ons’</span>
+        <img src="./assets/images/addons.png" class="addons-logo" />
       </button>
     </div>
   </div>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Create Your Aura - Register</title>
+  <link href="./styles/register.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="register-container">
+    <h2 class="register-title"><span class="emoji">😊</span>Create Your Aura</h2>
+    <form class="register-form" autocomplete="off" onsubmit="return false;">
+      <label for="name" class="form-label">Enter your Name</label>
+      <input id="name" name="name" type="text" class="form-input" placeholder="Name" required />
+      
+      <label for="email" class="form-label">Enter your Email</label>
+      <input id="email" name="email" type="email" class="form-input" placeholder="Enter your Email" required />
+
+      <label for="password" class="form-label">Create the password</label>
+      <input id="password" name="password" type="password" class="form-input" placeholder="Enter your password" required />
+
+      <button type="submit" class="sign-up-btn">SIGN UP</button>
+    </form>
+
+    <div class="register-footer">
+      Have an account ?
+      <span class="link" id="login-link">Login</span>
+    </div>
+
+    <div class="separator">---or---</div>
+
+    <div class="continue-with">Continue with</div>
+    <div class="oauth-btns">
+      <button type="button" class="oauth-btn google" title="Continue with Google" aria-label="Continue with Google">
+        <!-- Google SVG -->
+        <svg width="22" height="22" viewBox="0 0 256 262" xmlns="http://www.w3.org/2000/svg"><g><path fill="#4285F4" d="M255.68 133.51c0-11.72-1.08-23.17-3.22-34.21H130V158.47h70.51c-3.04 16.68-12.47 30.84-26.4 40.37v33.54h42.85c25-23.07 39.43-57.08 39.43-98.87z"/><path fill="#34A853" d="M130 262c35.1 0 64.56-11.63 86.08-31.56l-42.85-33.54c-11.9 7.98-27.17 12.67-43.23 12.67-33.21 0-61.35-22.46-71.45-52.55H12.14v33.95C33.63 234.79 78.17 262 130 262z"/><path fill="#FBBC05" d="M58.55 157.52A78.53 78.53 0 0149.2 130c0-9.54 1.65-18.79 4.6-27.52V68.53H12.14A130.38 130.38 0 000 130c0 20.7 5.16 40.31 14.23 57.47l44.32-30.95z"/><path fill="#EA4335" d="M130 51.94c19.13 0 36.23 6.59 49.76 19.52l37.38-37.38C194.52 14.24 164.56 0 130 0 78.17 0 33.63 27.21 12.14 68.53l47.69 37.95C68.65 74.4 96.79 51.94 130 51.94z"/></g></svg>
+      </button>
+      <button type="button" class="oauth-btn github" title="Continue with GitHub" aria-label="Continue with GitHub">
+        <!-- GitHub SVG -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.372 0 0 5.373 0 12c0 5.303 3.438 9.8 8.207 11.387.6.111.793-.26.793-.577v-2.234c-3.338.724-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.744.083-.729.083-.729 1.204.085 1.839 1.236 1.839 1.236 1.07 1.835 2.807 1.305 3.492.997.108-.775.42-1.305.763-1.605-2.665-.304-5.467-1.332-5.467-5.931 0-1.311.468-2.382 1.235-3.222-.124-.304-.535-1.527.117-3.184 0 0 1.008-.322 3.301 1.23.956-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.005.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.657.242 2.88.119 3.184.77.84 1.233 1.911 1.233 3.222 0 4.609-2.807 5.625-5.479 5.922.43.371.814 1.104.814 2.227v3.301c0 .319.192.694.801.576C20.565 21.796 24 17.299 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      </button>
+    </div>
+  </div>
+</body>
+</html>
